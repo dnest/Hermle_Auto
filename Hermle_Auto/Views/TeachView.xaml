@@ -83,7 +83,7 @@
                                 </ComboBox>
 
 
-                                <Button Grid.Row="0" Grid.Column="1" Content="Teach Position" Margin="10,20,10,10" Style="{DynamicResource ActButton}" HorizontalContentAlignment="Center" VerticalAlignment="Center" Width="250" Height="60"/>
+                                <Button Grid.Row="0" Grid.Column="1" Content="Teach Position" Margin="10,20,10,10" Style="{DynamicResource ActButton}" HorizontalContentAlignment="Center" VerticalAlignment="Center" Width="250" Height="60" Click="Button_Click"/>
 
                             </StackPanel>
 

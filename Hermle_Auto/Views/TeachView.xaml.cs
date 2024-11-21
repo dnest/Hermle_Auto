@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hermle_Auto.ViewModels;
+using HermleCS.Data;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -187,6 +189,44 @@ namespace Hermle_Auto.Views
             //DrillCodeTextBox.Text = currentDrillCode.ToString();
 
             //WpOptionLineNum = currentLineNumber.ToString();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PocketTable.ItemsSource = null;
+
+            var toolType = "DRILL";
+            //var toolType = "HSK";
+            //var toolType = "ROUND";
+            //var toolType = "";
+
+            var ret = D.Instance.ReadLocations(toolType);
+            if(ret < 0)
+            {
+                // Error
+                return;
+            }
+
+            var locations = D.Instance.getLocations(toolType);
+            if(locations == null)
+            {
+                // No locations
+                return;
+            }
+
+            var data = new[] 
+            {
+                new { Number="", Name="", X=0.0, Y=0.0, Z=0.0, },
+            }.ToList();
+            data.Clear();
+
+            var number = 1;
+            foreach (var l in locations)
+            {
+                data.Add(new { Number=$"{number++}", Name=l.name, X=l.x, Y=l.y, Z=l.z, });
+            }
+
+            PocketTable.ItemsSource = data;
         }
     }
 

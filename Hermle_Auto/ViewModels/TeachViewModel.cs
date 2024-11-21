@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using HermleCS.Data;
 using System.Windows;
 using System.Windows.Input;
 
@@ -27,6 +28,10 @@ namespace Hermle_Auto.ViewModels
 				message = $"{param} Action!";
 			}
             MessageBox.Show(message);
+        }
+
+        public static void LoadCSV(string toolType)
+        {
         }
     }
 

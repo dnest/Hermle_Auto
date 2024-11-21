@@ -40,6 +40,24 @@ namespace HermleCS.Data
             }
         }
 
+        public Locations[,,] getLocations(string toolName)
+        {
+            toolName = (toolName+"").ToUpper();
+            if(toolName == "DRILL")
+            {
+                return DrillLocations;
+            }
+            else if(toolName == "HSK")
+            {
+                return HSKLocations;
+            }
+            else if(toolName == "ROUND")
+            {
+                return RoundLocations;
+            }
+
+            return null;
+        }
 
         public String getLocationValues(Locations[,,] locations)
         {
@@ -132,11 +150,12 @@ namespace HermleCS.Data
 
         public int ReadLocations(String toolname)
         {
+            toolname = (toolname+"").ToUpper();
             Locations[,,] target;
             String targetfile;
             int shelf_count, column_count, pocket_count;
 
-            if (toolname.Equals("DRILL") || toolname.Equals("drill"))
+            if (toolname.Equals("DRILL"))
             {
                 target = DrillLocations;
                 targetfile = "Drill";
@@ -144,7 +163,7 @@ namespace HermleCS.Data
                 column_count = C.DRILL_LOCATION_COLUMN_COUNT;
                 pocket_count = C.DRILL_LOCATION_POCKET_COUNT;
             }
-            else if (toolname.Equals("HSK") || toolname.Equals("hsk"))
+            else if (toolname.Equals("HSK"))
             {
                 target = HSKLocations;
                 targetfile = "HSK";
@@ -152,7 +171,7 @@ namespace HermleCS.Data
                 column_count = C.HSK_LOCATION_COLUMN_COUNT;
                 pocket_count = C.HSK_LOCATION_POCKET_COUNT;
             }
-            else if (toolname.Equals("ROUND") || toolname.Equals("round"))
+            else if (toolname.Equals("ROUND"))
             {
                 target = RoundLocations;
                 targetfile = "Round";
