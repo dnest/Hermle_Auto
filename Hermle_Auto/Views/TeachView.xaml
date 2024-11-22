@@ -71,7 +71,8 @@
                             <StackPanel>
                                 <Label Content=" Pick Status From List &#x0a; Location From Robot &#x0a; as General Position." Width="250" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="18" HorizontalAlignment="Center" HorizontalContentAlignment="Left" Margin="0,10,0,10"/>
 
-                                <ComboBox  x:Name="StatusListComboBox" Width="250" Margin="5,5,5,5" VerticalAlignment="Center" Padding="5,3,5,3">
+                                <ComboBox  x:Name="SelectLocation" Width="250" Margin="5,5,5,5" VerticalAlignment="Center" Padding="5,3,5,3">
+                                    <ComboBoxItem IsSelected="True">Select Location</ComboBoxItem>
                                     <ComboBoxItem Content="Kiosk"/>
                                     <ComboBoxItem Content="Chunk"/>
                                     <ComboBoxItem Content="Spindle"/>

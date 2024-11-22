@@ -244,8 +244,87 @@ namespace Hermle_Auto.Views
 
         private void TeachPositionButton_Click(object sender, RoutedEventArgs e)
         {
-        }
+            TeachPositionLocations();
 
+        }
+        private void TeachPositionLocations()
+        {
+            //1 - Robot : CurrentPosition recv
+
+            //2 GeneralLcation input
+
+            if (SelectLocation.Text == "Kiosk")
+            {
+                // Save position to the memory of PC.
+ /*               GeneralLocation[11].X = TempPosition[0];
+                GeneralLocation[11].Y = TempPosition[1];
+                GeneralLocation[11].Z = TempPosition[2];
+                GeneralLocation[11].Rx = TempPosition[3];
+                GeneralLocation[11].Ry = TempPosition[4];
+                GeneralLocation[11].Rz = TempPosition[5]; */
+               // GeneralLocation = Robot Current Position 
+               // PC -> Robot Write Position(Robot Current Position )
+               // PC -> Robot H_COMMAND(calc_kiosk_points.TP)
+            }
+            else if (SelectLocation.Text == "Chuck")
+            {
+/*                GeneralLocation[12].X = TempPosition[0];
+                GeneralLocation[12].Y = TempPosition[1];
+                GeneralLocation[12].Z = TempPosition[2];
+                GeneralLocation[12].Rx = TempPosition[3];
+                GeneralLocation[12].Ry = TempPosition[4];
+                GeneralLocation[12].Rz = TempPosition[5]; */
+                // GeneralLocation = Robot Current Position 
+               // PC -> Robot Write Position(Robot Current Position )
+               // PC -> Robot H_COMMAND(calc_chuck_points.TP)
+
+            }
+            else if (SelectLocation.Text == "Spindle")
+            {
+ /*               GeneralLocation[10].X = TempPosition[0];
+                GeneralLocation[10].Y = TempPosition[1];
+                GeneralLocation[10].Z = TempPosition[2];
+                GeneralLocation[10].Rx = TempPosition[3];
+                GeneralLocation[10].Ry = TempPosition[4];
+                GeneralLocation[10].Rz = TempPosition[5];
+ */
+               // GeneralLocation = Robot Current Position 
+               // PC -> Robot Write Position(Robot Current Position )
+            
+            }
+            else if (SelectLocation.Text == "Station 1")
+            {
+/*               GeneralLocation[120].X = TempPosition[0];
+                GeneralLocation[120].Y = TempPosition[1];
+                GeneralLocation[120].Z = TempPosition[2];
+                GeneralLocation[120].Rx = TempPosition[3];
+                GeneralLocation[120].Ry = TempPosition[4];
+                GeneralLocation[120].Rz = TempPosition[5];
+*/
+                // GeneralLocation = Robot Current Position 
+               // PC -> Robot Write Position(Robot Current Position )
+              
+            }
+            else if (SelectLocation.Text == "Station 2")
+            {
+            /*         GeneralLocation[121].X = TempPosition[0];
+                        GeneralLocation[121].Y = TempPosition[1];
+                        GeneralLocation[121].Z = TempPosition[2];
+                        GeneralLocation[121].Rx = TempPosition[3];
+                        GeneralLocation[121].Ry = TempPosition[4];
+                        GeneralLocation[121].Rz = TempPosition[5];
+            */
+                // GeneralLocation = Robot Current Position 
+                // PC -> Robot Write Position(Robot Current Position )
+            }
+            else if (SelectLocation.Text == "Select Location")
+            {
+                MessageBox.Show("Please select a valid location.", "Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+
+
+        }
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             RefreshTeachGeneralLocations();
