@@ -1,0 +1,89 @@
+Version 7
+***********
+fix the HSK interpolation.
+not like in the Drills-the singular point was between pockets 7 and 8.
+here in the HSK - the singular point is between pokets 5 and 6.
+
+version 8
+***********
+disable the option for "calculate all shelvs" in the Automatin interpolation.
+not ready yet.
+
+version 9
+***********
+1.upgrade the BackUp and Restore mechanism.
+2.declare a new variable :
+	Public Const AmountOfGeneralLocations = 40
+
+version 10
+**************
+improve the LOAD cycle
+
+
+version 11
+************
+improve the UNLOAD cycle.
+
+version 12 
+************
+enable the 'release E Stop' on the toolbar.
+improve the timer :tmrUpdateRobotStatus_Timer()
+improve the function "RunTestsJobs()" to fit HSK too.
+
+version  12.1
+****************
+make sure that :
+	 when the app  shut down:
+1  save the Workpiece table
+2  save the automationstatus table
+	when the app  app rise:
+3  load and display the workpiece table
+4  load and display the status table.
+
+add ENUM to the formdialog feedback.
+
+version 12.2
+****************
+check input.write function that check the diameter the user entered.
+IsLegalDiameter(ByVal MyDiameter As String) As Boolean
+
+improve the 'start automat' function by send the
+ software to line 0 by every button-Click.
+
+improve the 'resume' function by adding the ContinueJob command.
+
+improve the cenario when the VB can not find a pocket to take a tool from,in the cycle pocket to the chuck.
+
+add feedback to the user after reading data from the controller.
+revive the SpeedSlider in the VB and send data to controller  .to integer number 12.
+
+ 
+
+
+version 12.3
+****************
+fix a bug.if the user set the ToolAmount > 30
+the software dose not crush.the software ment to handle toolamount of 30 pieces.
+
+in case of 'pocket not found' do not show the 'formdialog ' repeatedly...but stop the main timer.
+
+make the "formDialog" to VBmodal form.
+
+
+
+version 12.98
+*******************
+support Round tool math
+support Drill Math
+support OffCenter Math
+
+
+
+
+
+
+
+
+
+
+
