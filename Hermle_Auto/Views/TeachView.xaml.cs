@@ -263,20 +263,20 @@ namespace Hermle_Auto.Views
                 GeneralLocation[11].Ry = TempPosition[4];
                 GeneralLocation[11].Rz = TempPosition[5]; */
                // GeneralLocation = Robot Current Position 
-               // PC -> Robot Write Position(Robot Current Position )
-               // PC -> Robot H_COMMAND(calc_kiosk_points.TP)
+               // 3-1 : PC -> Robot Write Position(Robot Current Position )
+               // 3-2 : PC -> Robot H_COMMAND(calc_kiosk_points.TP)
             }
             else if (SelectLocation.Text == "Chuck")
             {
-/*                GeneralLocation[12].X = TempPosition[0];
-                GeneralLocation[12].Y = TempPosition[1];
-                GeneralLocation[12].Z = TempPosition[2];
-                GeneralLocation[12].Rx = TempPosition[3];
-                GeneralLocation[12].Ry = TempPosition[4];
-                GeneralLocation[12].Rz = TempPosition[5]; */
+                /*                GeneralLocation[12].X = TempPosition[0];
+                                GeneralLocation[12].Y = TempPosition[1];
+                                GeneralLocation[12].Z = TempPosition[2];
+                                GeneralLocation[12].Rx = TempPosition[3];
+                                GeneralLocation[12].Ry = TempPosition[4];
+                                GeneralLocation[12].Rz = TempPosition[5]; */
                 // GeneralLocation = Robot Current Position 
-               // PC -> Robot Write Position(Robot Current Position )
-               // PC -> Robot H_COMMAND(calc_chuck_points.TP)
+                // 3-1 : PC -> Robot Write Position(Robot Current Position )
+                // 3-2 :PC -> Robot H_COMMAND(calc_chuck_points.TP)
 
             }
             else if (SelectLocation.Text == "Spindle")
@@ -288,8 +288,8 @@ namespace Hermle_Auto.Views
                 GeneralLocation[10].Ry = TempPosition[4];
                 GeneralLocation[10].Rz = TempPosition[5];
  */
-               // GeneralLocation = Robot Current Position 
-               // PC -> Robot Write Position(Robot Current Position )
+               // 3-1 : GeneralLocation = Robot Current Position 
+               // 3-2 : PC -> Robot Write Position(Robot Current Position )
             
             }
             else if (SelectLocation.Text == "Station 1")
@@ -301,8 +301,8 @@ namespace Hermle_Auto.Views
                 GeneralLocation[120].Ry = TempPosition[4];
                 GeneralLocation[120].Rz = TempPosition[5];
 */
-                // GeneralLocation = Robot Current Position 
-               // PC -> Robot Write Position(Robot Current Position )
+                // 3-1 : GeneralLocation = Robot Current Position 
+               // 3-2 : PC -> Robot Write Position(Robot Current Position )
               
             }
             else if (SelectLocation.Text == "Station 2")
@@ -314,8 +314,8 @@ namespace Hermle_Auto.Views
                         GeneralLocation[121].Ry = TempPosition[4];
                         GeneralLocation[121].Rz = TempPosition[5];
             */
-                // GeneralLocation = Robot Current Position 
-                // PC -> Robot Write Position(Robot Current Position )
+                // 3-1 : GeneralLocation = Robot Current Position 
+                // 3-2 : PC -> Robot Write Position(Robot Current Position )
             }
             else if (SelectLocation.Text == "Select Location")
             {
