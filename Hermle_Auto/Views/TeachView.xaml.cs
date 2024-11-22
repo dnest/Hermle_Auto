@@ -191,16 +191,7 @@ namespace Hermle_Auto.Views
             //WpOptionLineNum = currentLineNumber.ToString();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PocketTable.ItemsSource = null;
-
-            var toolType = "DRILL";
-            //var toolType = "HSK";
-            //var toolType = "ROUND";
-            //var toolType = "";
-
-            var dicNumName = new Dictionary<string, string>()
+        Dictionary<string, string> DicNumName = new Dictionary<string, string>()
             {
                 { "10","Spindle" },
                 { "11","Kiosk" },
@@ -209,21 +200,30 @@ namespace Hermle_Auto.Views
                 { "121","Station 2" },
             };
 
+        private void RefreshTeachGeneralLocations()
+        {
+            PocketTable.ItemsSource = null;
+
+            var toolType = "DRILL";
+            //var toolType = "HSK";
+            //var toolType = "ROUND";
+            //var toolType = "";
+
             var ret = D.Instance.ReadGeneralLocations(toolType);
-            if(ret < 0)
+            if (ret < 0)
             {
                 // Error
                 return;
             }
 
             var locations = D.Instance.getGeneralLocations(toolType);
-            if(locations == null)
+            if (locations == null)
             {
                 // No locations
                 return;
             }
 
-            var data = new[] 
+            var data = new[]
             {
                 new { Number="", Name="", X=0.0, Y=0.0, Z=0.0, },
             }.ToList();
@@ -232,14 +232,23 @@ namespace Hermle_Auto.Views
             foreach (var l in locations)
             {
                 var number = l.name;
-                if (dicNumName.ContainsKey(number))
+                if (DicNumName.ContainsKey(number))
                 {
-                    var name = dicNumName[number];
+                    var name = DicNumName[number];
                     data.Add(new { Number = number, Name = name, X = l.x, Y = l.y, Z = l.z, });
                 }
             }
 
             PocketTable.ItemsSource = data;
+        }
+
+        private void TeachPositionButton_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshTeachGeneralLocations();
         }
     }
 
