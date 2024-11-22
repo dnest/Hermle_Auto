@@ -59,6 +59,25 @@ namespace HermleCS.Data
             return null;
         }
 
+        public GeneralLocations[] getGeneralLocations(string toolName)
+        {
+            toolName = (toolName + "").ToUpper();
+            if (toolName == "DRILL")
+            {
+                return DrillGeneralLocations;
+            }
+            else if (toolName == "HSK")
+            {
+                return HSKGeneralLocations;
+            }
+            else if (toolName == "ROUND")
+            {
+                return RoundGeneralLocations;
+            }
+
+            return null;
+        }
+
         public String getLocationValues(Locations[,,] locations)
         {
             String rval = "";
@@ -323,23 +342,24 @@ namespace HermleCS.Data
 
         public int ReadGeneralLocations(String toolname)
         {
+            toolname = (toolname + "").ToUpper();
             GeneralLocations[] target;
             String targetfile;
             int count;
 
-            if ( toolname.Equals("DRILL") || toolname.Equals("drill") )
+            if ( toolname.Equals("DRILL"))
             {
                 target = DrillGeneralLocations;
                 targetfile = "Drill";
                 count = C.DRILL_GENLOCATION_COUNT;
             }
-            else if (toolname.Equals("HSK") || toolname.Equals("hsk"))
+            else if (toolname.Equals("HSK"))
             {
                 target = HSKGeneralLocations;
                 targetfile = "HSK";
                 count = C.HSK_GENLOCATION_COUNT;
             }
-            else if (toolname.Equals("ROUND") || toolname.Equals("round"))
+            else if (toolname.Equals("ROUND"))
             {
                 target = RoundGeneralLocations;
                 targetfile = "Round";

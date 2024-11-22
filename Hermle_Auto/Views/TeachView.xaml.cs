@@ -200,14 +200,23 @@ namespace Hermle_Auto.Views
             //var toolType = "ROUND";
             //var toolType = "";
 
-            var ret = D.Instance.ReadLocations(toolType);
+            var dicNumName = new Dictionary<string, string>()
+            {
+                { "10","Spindle" },
+                { "11","Kiosk" },
+                { "12","Chuck" },
+                { "120","Station 1" },
+                { "121","Station 2" },
+            };
+
+            var ret = D.Instance.ReadGeneralLocations(toolType);
             if(ret < 0)
             {
                 // Error
                 return;
             }
 
-            var locations = D.Instance.getLocations(toolType);
+            var locations = D.Instance.getGeneralLocations(toolType);
             if(locations == null)
             {
                 // No locations
@@ -220,10 +229,14 @@ namespace Hermle_Auto.Views
             }.ToList();
             data.Clear();
 
-            var number = 1;
             foreach (var l in locations)
             {
-                data.Add(new { Number=$"{number++}", Name=l.name, X=l.x, Y=l.y, Z=l.z, });
+                var number = l.name;
+                if (dicNumName.ContainsKey(number))
+                {
+                    var name = dicNumName[number];
+                    data.Add(new { Number = number, Name = name, X = l.x, Y = l.y, Z = l.z, });
+                }
             }
 
             PocketTable.ItemsSource = data;
