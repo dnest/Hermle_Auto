@@ -204,7 +204,9 @@ namespace Hermle_Auto.Views
         {
             PocketTable.ItemsSource = null;
 
-            var toolType = "DRILL";
+
+            var toolType = D.Instance.GetToolType();
+            //var toolType = "DRILL";
             //var toolType = "HSK";
             //var toolType = "ROUND";
             //var toolType = "";
