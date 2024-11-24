@@ -14,7 +14,9 @@ using System.Windows.Media;
 
 namespace Hermle_Auto.ViewModels
 {
-    public class UserControl1ViewModel : ObservableObject , INotifyPropertyChanged
+    public class ViewmModelBase : ObservableObject { }
+
+    public class UserControl1ViewModel : ViewmModelBase
     {
 
         private string _diameter = "Diameter";

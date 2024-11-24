@@ -64,7 +64,7 @@
 
                     </Grid>
 
-                    <Button Grid.Row="0" Grid.Column="1" Content="Refresh" Margin="10,35,10,10" Style="{DynamicResource ActButton}" Width="120" Height="120" VerticalAlignment="Top" Click="RefreshButton_Click"/>
+                    <Button Grid.Row="0" Grid.Column="1" Content="Refresh" Margin="10,35,10,10" Style="{DynamicResource ActButton}" Width="120" Height="120" VerticalAlignment="Top" Click="GeneralRefreshButton_Click"/>
 
                     <GroupBox Header="Teach Locations" FontSize="18" Margin="0,20,0,20"  FontFamily="Arial" FontWeight="Bold" Grid.Column="2" VerticalAlignment="Top">
                         <StackPanel VerticalAlignment="Top">
@@ -78,7 +78,7 @@
                                     <ComboBoxItem Content="Spindle"/>
                                     <ComboBoxItem Content="Station 1"/>
                                     <ComboBoxItem Content="Station 2"/>
-                   
+
                                 </ComboBox>
 
 
@@ -129,10 +129,10 @@
                         <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,15,0">
                             <StackPanel Orientation="Vertical">
                                 <Button Grid.Row="1" Grid.Column="1" Content="Teach Last"
-                     Command="{Binding TeachCommand}" CommandParameter="_Last" Height="60" Margin="2,2,2,20"
+                     Command="{Binding TeachCommand}" CommandParameter="_Last" Height="60" Margin="2,2,2,20" Click="TeachLastButton_Click"
                      />
                                 <Button Grid.Row="1" Grid.Column="1" Content="Calculate"
-                     Command="{Binding TeachCommand}" CommandParameter="Calculate" Height="60"
+                     Command="{Binding TeachCommand}" CommandParameter="Calculate" Height="60" Click="CalcButton_Click"
                      />
                             </StackPanel>
                         </Grid>
@@ -146,10 +146,10 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Button Grid.Row="0" Content="Teach First" HorizontalAlignment="Left"
-                 Command="{Binding TeachCommand}" CommandParameter="_First" Grid.RowSpan="2" VerticalAlignment="Top" Height="50"
+                 Command="{Binding TeachCommand}" CommandParameter="_First" Grid.RowSpan="2" VerticalAlignment="Top" Height="50" Click="TeachFirstButton_Click"
                  />
-                            <Button Grid.Row="1" Grid.Column="0" Content="Refresh Table" VerticalAlignment="Bottom"
-                 Command="{Binding TeachCommand}" CommandParameter="Refresh Table" Height="70"
+                            <Button Grid.Row="1" Grid.Column="1" Content="Refresh Table" VerticalAlignment="Bottom"
+                 Command="{Binding TeachCommand}" CommandParameter="Refresh Table" Height="70" Click="ShelvesRefreshButton_Click" Margin="150,0,335,-213"
                  />
                             <Grid Margin="10" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
                                 <DataGrid Name="CoordinateGrid" 
@@ -187,8 +187,8 @@
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>
-                            
-                            
+
+
                         </Grid>
                         <!-- endregion -->
                     </Grid>
@@ -322,7 +322,7 @@ Click="DecreaseDrillCode" Grid.Column="2"/>
                             <Button Content="Teach Single Pocket" Width="250"
                  Grid.Row="2" Grid.ColumnSpan="2"
                  HorizontalAlignment="Left" 
-                 Command="{Binding TeachCommand}" CommandParameter="_Single Pocket" Margin="10,2,2,2" Height="40"
+                 Command="{Binding TeachCommand}" CommandParameter="_Single Pocket" Margin="10,2,2,2" Height="40" Click="TeachSinglePocketButton_Click"
                  />
                         </Grid>
                         <!-- endregion -->
@@ -348,7 +348,7 @@ Click="DecreaseDrillCode" Grid.Column="2"/>
                     <!-- Multi Pockets-->
                     <Grid >
                         <!-- DataGrid (좌측) -->
-                        <DataGrid x:Name="PocketTable2" Grid.Row="0" Grid.Column="1" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" Margin="10,35,10,10" 
+                        <DataGrid x:Name="ViewPocketLocationsGrid" Grid.Row="0" Grid.Column="1" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" Margin="10,35,10,10" 
 ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}" CellStyle="{StaticResource DataGridCellStyle}" Grid.ColumnSpan="2" VerticalAlignment="Top" Height="340" Width="620">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Pocket Number" Binding="{Binding PocketNumber}" Width="120"/>
@@ -356,7 +356,7 @@ ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}" CellStyle="{StaticResou
                                 <DataGridTextColumn Header="Y" Binding="{Binding Y}" Width="80"/>
                                 <DataGridTextColumn Header="Z" Binding="{Binding Z}" Width="80"/>
                                 <DataGridTextColumn Header="Rx" Binding="{Binding Rx}" Width="80"/>
-                                <DataGridTextColumn Header="Ty" Binding="{Binding Ry}" Width="80"/>
+                                <DataGridTextColumn Header="Ry" Binding="{Binding Ry}" Width="80"/>
                                 <DataGridTextColumn Header="Rz" Binding="{Binding Rz}" Width="80"/>
                             </DataGrid.Columns>
                         </DataGrid>
@@ -393,7 +393,7 @@ VerticalAlignment="Center" IsReadOnly="True" TextAlignment="Center" FontSize="25
 
                                 </StackPanel>
 
-                                <Button Grid.Row="0" Grid.Column="1" Content="Show Locations" Margin="10,20,10,10" Style="{DynamicResource ActButton}" HorizontalContentAlignment="Center" VerticalAlignment="Center" Width="200" Height="120"/>
+                                <Button Grid.Row="0" Grid.Column="1" Content="Show Locations" Margin="10,20,10,10" Style="{DynamicResource ActButton}" HorizontalContentAlignment="Center" VerticalAlignment="Center" Width="200" Height="120" Click="ShowPocketLocationButton_Click"/>
 
                             </StackPanel>
 
