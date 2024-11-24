@@ -38,7 +38,7 @@ namespace Hermle_Auto.Views
         {
             InitializeComponent();
 
-            //this.DataContext = this;
+            this.DataContext = new TeachViewModel();
 
             InitializeCoordinates();
         }
@@ -327,9 +327,126 @@ namespace Hermle_Auto.Views
 
 
         }
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        private void GeneralRefreshButton_Click(object sender, RoutedEventArgs e)
         {
             RefreshTeachGeneralLocations();
+        }
+
+        private Dictionary<string, List<Locations>> ShelvesLocations { get; set; }
+            = new Dictionary<string, List<Locations>>();
+
+        private void TeachFirstButton_Click(object sender, RoutedEventArgs e)
+        {
+            var shelf = ShelfTextBox.Text;
+            if(!ShelvesLocations.Keys.Contains(shelf))
+                ShelvesLocations.Add(shelf, new List<Locations>());
+
+            var locations = ShelvesLocations[shelf];
+
+            var loc = D.Instance.getCurrentLocation();
+            if (locations.Count < 1)
+                locations.Add(loc);
+            else
+                locations[0] = loc;
+
+            // Data
+            CoordinateGrid.ItemsSource = null;
+
+            var data = new[] {
+                new { X=0.0, Y=0.0, Z=0.0, },
+            }.ToList();
+            data.Clear();
+
+            foreach (var l in locations)
+            {
+                data.Add(new { X = l.x, Y = l.y, Z = l.z, });
+            }
+
+            CoordinateGrid.ItemsSource = data;
+        }
+
+        private void TeachLastButton_Click(object sender, RoutedEventArgs e)
+        {
+            var shelf = ShelfTextBox.Text;
+            if (!ShelvesLocations.Keys.Contains(shelf))
+                ShelvesLocations.Add(shelf, new List<Locations>());
+
+            var locations = ShelvesLocations[shelf];
+
+            var loc = D.Instance.getCurrentLocation();
+
+            if (locations.Count < 1)
+                locations.Add(loc);
+           
+            if (locations.Count < 2)
+                locations.Add(loc);
+            else
+                locations[1] = loc;
+
+            // Data
+            CoordinateGrid.ItemsSource = null;
+
+            var data = new[] {
+                new { X=0.0, Y=0.0, Z=0.0, },
+            }.ToList();
+            data.Clear();
+
+            foreach (var l in locations)
+            {
+                data.Add(new { X = l.x, Y = l.y, Z = l.z, });
+            }
+
+            CoordinateGrid.ItemsSource = data;
+        }
+
+        private void CalcButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ShelvesRefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            CoordinateGrid.ItemsSource = null;
+
+            var shelf = ShelfTextBox.Text;
+            if (!ShelvesLocations.Keys.Contains(shelf))
+                ShelvesLocations.Add(shelf, new List<Locations>());
+
+            var locations = ShelvesLocations[shelf];
+
+            CoordinateGrid.ItemsSource = locations;
+        }
+
+        private void TeachSinglePocketButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ShowPocketLocationButton_Click(object sender, RoutedEventArgs e)
+        {
+            var drill = () => int.TryParse(
+                DrillCodeTextBox2.Text, out int n) ? n : 0;
+            var pocket = () => int.TryParse(
+                PocketTextBox3.Text, out int n) ? n : 0;
+
+            var toolname = "";
+
+            List<Locations> locations = D.Instance.GetPocketLocation(toolname);
+
+            // Data
+            CoordinateGrid.ItemsSource = null;
+
+            var data = new[]{
+                new {PocketNumber = "", X=0.0, Y=0.0, Z=0.0, Rx=0.0, Ry=0.0, Rz=0.0,},
+            }.ToList();
+            data.Clear();
+
+            foreach (var l in locations)
+            {
+                data.Add(new { PocketNumber = l.name, X = l.x, Y = l.y, Z = l.z, Rx = l.rx, Ry = l.ry, Rz = l.rz, });
+            }
+
+            ViewPocketLocationsGrid.ItemsSource = data;
         }
     }
 

@@ -36,7 +36,7 @@ namespace Hermle_Auto.Views
     /// </summary>
     public partial class UserControl1 : UserControl
     {
-        UserControl1ViewModel userControl1ViewModel = new UserControl1ViewModel();
+        //UserControl1ViewModel userControl1ViewModel = new UserControl1ViewModel();
         private CommHTTPComponent httpclient = CommHTTPComponent.Instance;
 
         private CommPLC commPLC = CommPLC.Instance;
@@ -54,9 +54,9 @@ namespace Hermle_Auto.Views
         {
             InitializeComponent();
 
-            this.DataContext = userControl1ViewModel;
+            this.DataContext = new UserControl1ViewModel();
 
-            workPieceView.WorkPieceChanged += userControl1ViewModel.OnWorkPieceUpdate;
+            //workPieceView.WorkPieceChanged += userControl1ViewModel.OnWorkPieceUpdate;
             //workPieceView.Visibility = Visibility.Visible;
 
 

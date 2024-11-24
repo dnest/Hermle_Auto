@@ -753,98 +753,98 @@ namespace HermleCS.Data
         }
 
 
-        public void ReadIniFile()
-        {
+        //public void ReadIniFile()
+        //{
            
 
-            string filePath = Path.Combine(C.ApplicationPath, "CSV", "IS2904.ini");
+        //    string filePath = Path.Combine(C.ApplicationPath, "CSV", "IS2904.ini");
 
-            try
-            {
-                var iniReader = new IniFileReader(filePath);
+        //    try
+        //    {
+        //        var iniReader = new IniFileReader(filePath);
 
-                iniFile.gripper.style = int.Parse(iniReader.TryGetValue("gripper", "style"));
+        //        iniFile.gripper.style = int.Parse(iniReader.TryGetValue("gripper", "style"));
 
-                iniFile.application.AppToolType = int.Parse(iniReader.TryGetValue("application", "AppToolType"));
-                iniFile.application.ToolSensor = int.Parse(iniReader.TryGetValue("application", "ToolSensor"));
-                iniFile.application.simulator = int.Parse(iniReader.TryGetValue("application", "simulator"));
-                iniFile.application.saw = int.Parse(iniReader.TryGetValue("application", "saw"));
-
-
-                iniFile.shelvs.first = int.Parse(iniReader.TryGetValue("shelvs", "first"));
-                iniFile.shelvs.second = int.Parse(iniReader.TryGetValue("shelvs", "second"));
-                iniFile.shelvs.third = int.Parse(iniReader.TryGetValue("shelvs", "third"));
-
-                iniFile.shelvsOffset.First = int.Parse(iniReader.TryGetValue("ShelvsOffset", "First"));
-                iniFile.shelvsOffset.Second = int.Parse(iniReader.TryGetValue("ShelvsOffset", "Second"));
-                iniFile.shelvsOffset.Thierd = int.Parse(iniReader.TryGetValue("ShelvsOffset", "Thierd"));
+        //        iniFile.application.AppToolType = int.Parse(iniReader.TryGetValue("application", "AppToolType"));
+        //        iniFile.application.ToolSensor = int.Parse(iniReader.TryGetValue("application", "ToolSensor"));
+        //        iniFile.application.simulator = int.Parse(iniReader.TryGetValue("application", "simulator"));
+        //        iniFile.application.saw = int.Parse(iniReader.TryGetValue("application", "saw"));
 
 
-                iniFile.offsets.AbovePocket = int.Parse(iniReader.TryGetValue("offsets", "AbovePocket"));
-                iniFile.offsets.AboveChuck = int.Parse(iniReader.TryGetValue("offsets", "AboveChuck"));
-                iniFile.offsets.ChuckStopper = int.Parse(iniReader.TryGetValue("offsets", "ChuckStopper"));
-                iniFile.offsets.ChuckDepth = int.Parse(iniReader.TryGetValue("offsets", "ChuckDepth"));
-                iniFile.offsets.PocketStopper = int.Parse(iniReader.TryGetValue("offsets", "PocketStopper"));
-                iniFile.offsets.KioskStopper = int.Parse(iniReader.TryGetValue("offsets", "KioskStopper"));
+        //        iniFile.shelvs.first = int.Parse(iniReader.TryGetValue("shelvs", "first"));
+        //        iniFile.shelvs.second = int.Parse(iniReader.TryGetValue("shelvs", "second"));
+        //        iniFile.shelvs.third = int.Parse(iniReader.TryGetValue("shelvs", "third"));
 
-                iniFile.documentation.UseExternalFile = int.Parse(iniReader.TryGetValue("Documentation", "UseExternalFile"));
-
-
-                /* if (iniReader.TryGetValue(section, key, out value))
-                 {
-                     iniFile.application.AppToolType = int.Parse(value);
-                     Console.WriteLine($"Found: [{section}] {key} = {value}");
-                 }*/
+        //        iniFile.shelvsOffset.First = int.Parse(iniReader.TryGetValue("ShelvsOffset", "First"));
+        //        iniFile.shelvsOffset.Second = int.Parse(iniReader.TryGetValue("ShelvsOffset", "Second"));
+        //        iniFile.shelvsOffset.Thierd = int.Parse(iniReader.TryGetValue("ShelvsOffset", "Thierd"));
 
 
+        //        iniFile.offsets.AbovePocket = int.Parse(iniReader.TryGetValue("offsets", "AbovePocket"));
+        //        iniFile.offsets.AboveChuck = int.Parse(iniReader.TryGetValue("offsets", "AboveChuck"));
+        //        iniFile.offsets.ChuckStopper = int.Parse(iniReader.TryGetValue("offsets", "ChuckStopper"));
+        //        iniFile.offsets.ChuckDepth = int.Parse(iniReader.TryGetValue("offsets", "ChuckDepth"));
+        //        iniFile.offsets.PocketStopper = int.Parse(iniReader.TryGetValue("offsets", "PocketStopper"));
+        //        iniFile.offsets.KioskStopper = int.Parse(iniReader.TryGetValue("offsets", "KioskStopper"));
+
+        //        iniFile.documentation.UseExternalFile = int.Parse(iniReader.TryGetValue("Documentation", "UseExternalFile"));
 
 
-            }
-            catch (Exception ex)
-            {
-                C.log("ReadIniFile Exception ; " + ex.Message);
-            }
-        }
-
-        public void WriteIniFile()
-        {
+        //        /* if (iniReader.TryGetValue(section, key, out value))
+        //         {
+        //             iniFile.application.AppToolType = int.Parse(value);
+        //             Console.WriteLine($"Found: [{section}] {key} = {value}");
+        //         }*/
 
 
-            string filePath = Path.Combine(C.ApplicationPath, "CSV", "IS2904.ini");
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        C.log("ReadIniFile Exception ; " + ex.Message);
+        //    }
+        //}
+
+        //public void WriteIniFile()
+        //{
+
+
+        //    string filePath = Path.Combine(C.ApplicationPath, "CSV", "IS2904.ini");
        
-            try
-            {
-                var iniReader = new IniFileReader(filePath);
+        //    try
+        //    {
+        //        var iniReader = new IniFileReader(filePath);
 
 
-                iniReader.SetValue("gripper", "style",                  iniFile.gripper.style.ToString());
-                iniReader.SetValue("application", "AppToolType"       , iniFile.application.AppToolType      .ToString()          );
-                iniReader.SetValue("application", "ToolSensor"        , iniFile.application.ToolSensor       .ToString()          );
-                iniReader.SetValue("application", "simulator"         , iniFile.application.simulator        .ToString()          );
-                iniReader.SetValue("application", "saw"               , iniFile.application.saw              .ToString()          );
-                iniReader.SetValue("shelvs", "first"                  , iniFile.shelvs.first                 .ToString()          );
-                iniReader.SetValue("shelvs", "second"                 , iniFile.shelvs.second                .ToString()          );
-                iniReader.SetValue("shelvs", "third"                  , iniFile.shelvs.third                 .ToString()          );
-                iniReader.SetValue("ShelvsOffset", "First"            , iniFile.shelvsOffset.First           .ToString()          );
-                iniReader.SetValue("ShelvsOffset", "Second"           , iniFile.shelvsOffset.Second          .ToString()          );
-                iniReader.SetValue("ShelvsOffset", "Thierd"           , iniFile.shelvsOffset.Thierd          .ToString()          );
-                iniReader.SetValue("offsets", "AbovePocket"           , iniFile.offsets.AbovePocket          .ToString()          );
-                iniReader.SetValue("offsets", "AboveChuck"            , iniFile.offsets.AboveChuck           .ToString()          );
-                iniReader.SetValue("offsets", "ChuckStopper"          , iniFile.offsets.ChuckStopper         .ToString()          );
-                iniReader.SetValue("offsets", "ChuckDepth"            , iniFile.offsets.ChuckDepth           .ToString()         );
-                iniReader.SetValue("offsets", "PocketStopper"         , iniFile.offsets.PocketStopper        .ToString()       );
-                iniReader.SetValue("offsets", "KioskStopper"          , iniFile.offsets.KioskStopper         .ToString()       );
-                iniReader.SetValue("Documentation", "UseExternalFile" , iniFile.documentation.UseExternalFile.ToString()      );
+        //        iniReader.SetValue("gripper", "style",                  iniFile.gripper.style.ToString());
+        //        iniReader.SetValue("application", "AppToolType"       , iniFile.application.AppToolType      .ToString()          );
+        //        iniReader.SetValue("application", "ToolSensor"        , iniFile.application.ToolSensor       .ToString()          );
+        //        iniReader.SetValue("application", "simulator"         , iniFile.application.simulator        .ToString()          );
+        //        iniReader.SetValue("application", "saw"               , iniFile.application.saw              .ToString()          );
+        //        iniReader.SetValue("shelvs", "first"                  , iniFile.shelvs.first                 .ToString()          );
+        //        iniReader.SetValue("shelvs", "second"                 , iniFile.shelvs.second                .ToString()          );
+        //        iniReader.SetValue("shelvs", "third"                  , iniFile.shelvs.third                 .ToString()          );
+        //        iniReader.SetValue("ShelvsOffset", "First"            , iniFile.shelvsOffset.First           .ToString()          );
+        //        iniReader.SetValue("ShelvsOffset", "Second"           , iniFile.shelvsOffset.Second          .ToString()          );
+        //        iniReader.SetValue("ShelvsOffset", "Thierd"           , iniFile.shelvsOffset.Thierd          .ToString()          );
+        //        iniReader.SetValue("offsets", "AbovePocket"           , iniFile.offsets.AbovePocket          .ToString()          );
+        //        iniReader.SetValue("offsets", "AboveChuck"            , iniFile.offsets.AboveChuck           .ToString()          );
+        //        iniReader.SetValue("offsets", "ChuckStopper"          , iniFile.offsets.ChuckStopper         .ToString()          );
+        //        iniReader.SetValue("offsets", "ChuckDepth"            , iniFile.offsets.ChuckDepth           .ToString()         );
+        //        iniReader.SetValue("offsets", "PocketStopper"         , iniFile.offsets.PocketStopper        .ToString()       );
+        //        iniReader.SetValue("offsets", "KioskStopper"          , iniFile.offsets.KioskStopper         .ToString()       );
+        //        iniReader.SetValue("Documentation", "UseExternalFile" , iniFile.documentation.UseExternalFile.ToString()      );
 
-                // 파일 저장
-                iniReader.Save();
+        //        // 파일 저장
+        //        iniReader.Save();
 
-            }
-            catch (Exception ex)
-            {
-                C.log("Read General Locations Exception ; " + ex.Message);
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        C.log("Read General Locations Exception ; " + ex.Message);
+        //    }
+        //}
         public string GetToolType()
         {
             if(iniFile.application.AppToolType == 0)
@@ -899,6 +899,11 @@ namespace HermleCS.Data
             if (status == 8) return "Disable";
 
             return str;
+        }
+
+        public List<Locations> GetPocketLocation(string toolname)
+        {
+            return new List<Locations>();
         }
     }
 }
