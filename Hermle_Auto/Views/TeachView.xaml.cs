@@ -429,7 +429,7 @@ namespace Hermle_Auto.Views
             var pocket = () => int.TryParse(
                 PocketTextBox3.Text, out int n) ? n : 0;
 
-            var toolname = "";
+            var toolname = "HSK"; // Tool Type 변수 설정 필요
 
             List<Locations> locations = D.Instance.GetPocketLocation(toolname);
 
@@ -441,9 +441,14 @@ namespace Hermle_Auto.Views
             }.ToList();
             data.Clear();
 
+            int pocketNumber = 1; // 초기 값 설정
+
             foreach (var l in locations)
             {
-                data.Add(new { PocketNumber = l.name, X = l.x, Y = l.y, Z = l.z, Rx = l.rx, Ry = l.ry, Rz = l.rz, });
+               
+                data.Add(new { PocketNumber = pocketNumber.ToString(), X = l.x, Y = l.y, Z = l.z, Rx = l.rx, Ry = l.ry, Rz = l.rz, });
+
+                pocketNumber++;
             }
 
             ViewPocketLocationsGrid.ItemsSource = data;

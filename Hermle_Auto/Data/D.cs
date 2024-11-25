@@ -142,7 +142,7 @@ namespace HermleCS.Data
 
             for (int i = 0; i < WorkPiecesList.GetLength(0); i++)
             {
-                rval += (i+1);
+                rval += (i + 1);
                 rval += workpiece[i].wpnumber + ",";
                 rval += workpiece[i].ncprogram + ",";
                 rval += workpiece[i].toolamount + ",";
@@ -333,7 +333,7 @@ namespace HermleCS.Data
             String targetfile;
             int count;
 
-            if ( toolname.Equals("DRILL") || toolname.Equals("drill") )
+            if (toolname.Equals("DRILL") || toolname.Equals("drill"))
             {
                 target = DrillGeneralLocations;
                 targetfile = "Drill";
@@ -730,7 +730,7 @@ namespace HermleCS.Data
                 return C.ERRNO_FAILED;
             }
 
-          
+
 
             return lines;
         }
@@ -755,7 +755,7 @@ namespace HermleCS.Data
 
         //public void ReadIniFile()
         //{
-           
+
 
         //    string filePath = Path.Combine(C.ApplicationPath, "CSV", "IS2904.ini");
 
@@ -811,7 +811,7 @@ namespace HermleCS.Data
 
 
         //    string filePath = Path.Combine(C.ApplicationPath, "CSV", "IS2904.ini");
-       
+
         //    try
         //    {
         //        var iniReader = new IniFileReader(filePath);
@@ -847,7 +847,7 @@ namespace HermleCS.Data
         //}
         public string GetToolType()
         {
-            if(iniFile.application.AppToolType == 0)
+            if (iniFile.application.AppToolType == 0)
             {
                 return "Other";
             }
@@ -901,9 +901,47 @@ namespace HermleCS.Data
             return str;
         }
 
-        public List<Locations> GetPocketLocation(string toolname)
+        public List<Locations> GetPocketLocation(string toolName)
         {
-            return new List<Locations>();
+            toolName = (toolName + "").ToUpper();
+            Locations[,,] selectedLocations = null;
+
+            if (toolName == "DRILL")
+            {
+                ReadLocations(toolName);
+                selectedLocations = DrillLocations;
+            }
+            else if (toolName == "HSK")
+            {
+                ReadLocations(toolName);
+                selectedLocations = HSKLocations;
+            }
+            else if (toolName == "ROUND")
+            {
+                ReadLocations(toolName);
+                selectedLocations = RoundLocations;
+            }
+
+            if (selectedLocations == null)
+            {
+                return new List<Locations>();
+            }
+
+            // Flatten the 3D array to a List<Locations>
+            List<Locations> locationsList = new List<Locations>();
+            foreach (var location in selectedLocations)
+            {
+                locationsList.Add(location);
+            }
+
+            // Limit the number of items in the list based on toolName
+            int limit = 0;
+            if (toolName == "DRILL") limit = 7;
+            else if (toolName == "HSK") limit = 10;
+            else if (toolName == "ROUND") limit = 8;
+
+            // Return only the specified number of items
+            return locationsList.Take(limit).ToList();
         }
     }
 }
